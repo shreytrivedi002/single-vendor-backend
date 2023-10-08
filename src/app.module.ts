@@ -6,11 +6,12 @@ import { TypegooseModule } from 'nestjs-typegoose';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { APP_PIPE } from '@nestjs/core';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    TypegooseModule.forRoot(process.env.MONGODB_URI, {}), UsersModule, AuthModule],
+    TypegooseModule.forRoot(process.env.MONGODB_URI, {}), UsersModule, AuthModule, ProductsModule],
   controllers: [AppController],
   providers: [
     AppService,
