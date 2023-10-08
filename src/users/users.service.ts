@@ -18,7 +18,6 @@ export class UsersService {
       throw new BadRequestException('User already exists. Please login')
     }
     const hash = await bcrypt.hashSync(createUserDto.password, 10);
-
     return hash
       ? await this.userModel.create({ ...createUserDto, password: hash }) :
       "hash not generated";
@@ -32,8 +31,8 @@ export class UsersService {
     return await this.userModel.findById(id);
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    return this.userModel.findByIdAndUpdate(id, updateUserDto, { new: true });
   }
 
   remove(id: number) {
