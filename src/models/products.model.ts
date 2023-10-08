@@ -6,9 +6,9 @@ import {
 } from '@typegoose/typegoose';
 
 
-export class User extends BaseModel {
+export class Product extends BaseModel {
     @prop()
-    title: string;
+    title!: string;
 
     @IsString()
     @prop({ required: false })
@@ -16,7 +16,7 @@ export class User extends BaseModel {
 
     @prop({ required: false })
     @IsArray()
-    images?: [];
+    images?: [string];
 
     @prop({ required: false })
     price?: number;

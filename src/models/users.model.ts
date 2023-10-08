@@ -36,7 +36,7 @@ export class User extends BaseModel {
     
     @IsString()
     @prop({ required: false })
-    password?: string;
+    password!: string;
 
     @prop({ required: true })
     contact!: number;

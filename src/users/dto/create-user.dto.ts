@@ -1,6 +1,6 @@
 export class CreateUserDto {
     contact!: number;
-    password?: string;
+    password!: string;
     name?: string;
     address?: string;
     gender?: string;
