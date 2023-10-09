@@ -11,7 +11,7 @@ import { ProductsModule } from './products/products.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    TypegooseModule.forRoot(process.env.MONGODB_URI, {}), UsersModule, AuthModule, ProductsModule],
+    TypegooseModule.forRoot("mongodb+srv://shrey:shrey@api1.igg6q.mongodb.net/?retryWrites=true&w=majority", {}), UsersModule, AuthModule, ProductsModule],
   controllers: [AppController],
   providers: [
     AppService,
