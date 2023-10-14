@@ -9,6 +9,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { UsersService } from 'src/users/users.service';
+import { AuthGuard } from './auth.guard';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -19,6 +21,7 @@ import { UsersService } from 'src/users/users.service';
       imports: [ConfigModule],
       useFactory: async () => ({
         secret: `${process.env.JWT_SECRET}`,
+        global: true, 
         signOptions: {
           expiresIn: '30d',
         },
@@ -26,7 +29,10 @@ import { UsersService } from 'src/users/users.service';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, UsersService,JwtStrategy],
+  providers: [AuthService, UsersService, JwtStrategy, {
+    provide: APP_GUARD,
+    useClass: AuthGuard,
+  }],
   exports: [AuthService, JwtStrategy, PassportModule]
 })
-export class AuthModule {}
+export class AuthModule { }
