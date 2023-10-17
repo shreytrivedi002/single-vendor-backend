@@ -3,11 +3,13 @@ import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 import { SignInDto } from './dto/signin.dto';
+import { Public } from 'src/utils/public.decorator';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @Public()
   @Post('signin')
   create(@Body() createAuthDto: SignInDto) {
     return this.authService.signin(createAuthDto);
