@@ -45,7 +45,6 @@ export class ProductsService {
   existingProduct.discount = updateProductDto.discount !== undefined ? updateProductDto.discount : existingProduct.discount;
   existingProduct.rating = updateProductDto.rating !== undefined ? updateProductDto.rating : existingProduct.rating;
   existingProduct.inventoryCount = updateProductDto.inventoryCount !== undefined ? updateProductDto.inventoryCount : existingProduct.inventoryCount;
-    
   const updatedProduct = await existingProduct.save();
 
   return updatedProduct;
