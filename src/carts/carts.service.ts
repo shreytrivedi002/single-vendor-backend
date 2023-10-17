@@ -30,15 +30,7 @@ export class CartsService {
     return await this.cartModel.find({ user: user.id as unknown as Ref<User> })
   }
 
-  // findOne(id: number) {
-  //   return `This action returns a #${id} cart`;
-  // }
-
-  update(id: number, updateCartDto: UpdateCartDto) {
-    return `This action updates a #${id} cart`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} cart`;
+  async update(id: string, updateCartDto: UpdateCartDto) {
+    return await this.cartModel.findByIdAndUpdate(id as unknown as Ref<Cart>, updateCartDto);
   }
 }
